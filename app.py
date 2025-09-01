@@ -38,7 +38,7 @@ async def send_daily_message():
 async def main():
     # جدولة المهمة يومياً الساعة 14:00 (2 مساءً) - حسب توقيت UTC
     # بالنسبة للسعودية (UTC+3)، اضبط الساعة على 11:00 لتكون 14:00 في السعودية
-    scheduler = AsyncScheduler()
+    scheduler = AsyncIOScheduler()
     trigger = CronTrigger(hour=11, minute=0)  # 11:00 UTC = 14:00 في السعودية
     
     scheduler.add_schedule(send_daily_message, trigger)
@@ -56,4 +56,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
