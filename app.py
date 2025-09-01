@@ -5,11 +5,12 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from datetime import datetime
 
-# البيانات المضمنة مباشرة في الكود - استبدل هذه القيم بمعلوماتك الحقيقية
+# البيانات المضمنة مباشرة في الكود
 BOT_TOKEN = '8430439548:AAGwv8wklw155KjjdMzfU9qiwoP5nlsowoA'  # استبدل بتوكن بوتك الحقيقي
 CHAT_ID = '1002695113378'  # استبدل بمعرف محادثتك الحقيقي
 VIDEO_URL = 'https://drive.googleapis.com/uc?export=download&id=1ELHdkIcV1aV-7fUcge6Qroj9tNDMJcdY'  # استبدل برابط الفيديو الحقيقي
 MESSAGE_TEXT = 'متبقي 30 دقيقة على افتتاح السوق الامريكي'  # استبدل بالرسالة التي تريدها
+
 
 bot = telegram.Bot(token=BOT_TOKEN)
 
@@ -42,6 +43,7 @@ async def main():
     trigger = CronTrigger(hour=11, minute=0)  # 11:00 UTC = 14:00 في السعودية
     
     scheduler.add_job(send_daily_message, trigger)
+    scheduler.start()
     
     print("بدأ تشغيل بوت التلجرام والجدولة...")
     print(f"سيتم الإرسال يومياً في الساعة 14:00 بتوقيت السعودية (11:00 UTC)")
@@ -51,10 +53,11 @@ async def main():
     print(f"رابط الفيديو: {VIDEO_URL}")
     print(f"الرسالة: {MESSAGE_TEXT}")
     
-   try:
-    await asyncio.Future()  # يعمل إلى أجل غير مسمى
-except (KeyboardInterrupt, SystemExit):
-    pass
+    # إبقاء البرنامج يعمل
+    try:
+        await asyncio.Future()  # يعمل إلى أجل غير مسمى
+    except (KeyboardInterrupt, SystemExit):
+        pass
 
 if __name__ == "__main__":
     asyncio.run(main())
