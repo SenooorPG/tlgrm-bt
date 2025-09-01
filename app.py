@@ -51,11 +51,14 @@ async def main():
     print(f"رابط الفيديو: {VIDEO_URL}")
     print(f"الرسالة: {MESSAGE_TEXT}")
     
-    async with scheduler:
-        await asyncio.Event().wait()  # تشغيل إلى أجل غير مسمى
+   try:
+    await asyncio.Future()  # يعمل إلى أجل غير مسمى
+except (KeyboardInterrupt, SystemExit):
+    pass
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
 
 
