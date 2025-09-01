@@ -41,7 +41,7 @@ async def main():
     scheduler = AsyncIOScheduler()
     trigger = CronTrigger(hour=11, minute=0)  # 11:00 UTC = 14:00 في السعودية
     
-    scheduler.add_schedule(send_daily_message, trigger)
+    scheduler.add_job(send_daily_message, trigger)
     
     print("بدأ تشغيل بوت التلجرام والجدولة...")
     print(f"سيتم الإرسال يومياً في الساعة 14:00 بتوقيت السعودية (11:00 UTC)")
@@ -56,5 +56,6 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
 
