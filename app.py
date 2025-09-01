@@ -1,7 +1,7 @@
 import os
 import telegram
 import asyncio
-from apscheduler.schedulers.async_ import AsyncScheduler
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from datetime import datetime
 
@@ -56,3 +56,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
